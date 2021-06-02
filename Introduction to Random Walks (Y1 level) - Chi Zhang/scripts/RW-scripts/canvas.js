@@ -24,7 +24,7 @@ let Params = {
 };
 
 function setup() {
-    let cnv = createCanvas(600, 600);
+    let cnv = createCanvas(450, 450);
     /*let x = (windowWidth - width) / 2;
     let y = (windowHeight - height) / 2;
     cnv.position(x, y);*/

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Title-->
+    <title>Introduction to Random Walks</title>
+    <!--css links-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet"
+          integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/skeleton.css" rel="stylesheet">
+    <link href="styles/index_Style.css" rel="stylesheet">
+    <link href="styles/loadout_Style.css" rel="stylesheet">
+    <!--Required JS resources-->
+    <script src="https://unpkg.com/vue@2.3.3/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="scripts/debounce_and_throttle.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"
+            integrity="sha256-t7CAuaRhODo/cv00lxyONppujwTFFwUWGkrhD/UB1qM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.min.js"
+            integrity="sha256-D/MkugLuxx4Xx0Kb92cUhpxlCMhUvQ0eOtEL8Ol23jM=" crossorigin="anonymous"></script>
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { 
+        fonts: ["TeX"],
+        linebreaks: { width: "container" } 
+    }
+  });
+  
+    </script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"></script>
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon-blue.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div id='flight' style="height: 40vh;"></div>
+    <div id='pdf' style="height: 40vh;"></div>
+    <div id='button div' style="text-align: center;">
+      <button onclick="javascript:startAnimation();">start</button>
+      <button onclick='javascript:skipAnimation();'>skip</button>
+      <button onclick="javascript:stop();">clear</button>
+      <button id='path-button' style='visibility: hidden'>hide path</button>
+
+      <div id='sigma-text'>sigma: 1</div>
+      <div>
+          <input type="range" min="0.1" max="10" value="1", step='0.1', id='sigma-slider'>
+      </div>
+    </div>
+    
+
+    <!--Inner page navigator-->
+    <!-- <nav>
+        <button><strong>Brownian Motion</strong></button>
+        <a href="../S2-Levy_Flight/levy_flight_graphs.html"><button>Lévy Flight</button></a>
+        <a href="../S3-Customised_Random_Walk/canvas.html"><button>Customise Functions</button></a>
+    </nav> -->
+
+    <script defer src='./scripts/RW-scripts/1Brownian_Anime.js'></script>
+    <script defer src='./scripts/RW-scripts/1Brownian_PDF.js'></script>
+
+    <!--Outer Navigator here.-->
+    <!-- <script> let pages = ["1What is a Random Walk?.html", "2Examples of Random Walks.html"]</script>
+    <script src="https://rawgit.com/Imperial-visualizations/Physics-Visualizations/master/css/navigator.js"></script> -->
+</body>
+</html>

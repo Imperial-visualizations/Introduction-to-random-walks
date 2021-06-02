@@ -37,10 +37,10 @@ let Params = {
 
 let coinFlip = {
     front: function() {
-        coin.src = 'Pound_coin_front.png';
+        coin.src = './images/Pound_coin_front.png';
     },
     back: function() {
-        coin.src = 'Pound_coin_back.png';
+        coin.src = './images/Pound_coin_back.png';
     }
 }
 
@@ -57,7 +57,10 @@ let currentPos = 0;
 let hasTriedMultiple = false;
 let xData = [];
 
-coin.style.width = "500px";
+coin.style.width = "100px";
+coin.style.display = 'block';
+coin.style.marginLeft = 'auto';
+coin.style.marginRight = 'auto';
 hiddenText.style.backgroundColor = 'black';
 hiddenText.style.color = 'black';
 
@@ -183,9 +186,9 @@ function coinTossAnimate(value) {
 
     setTimeout(function() {
         if (value === 1) {
-            coin.src = "Pound_coin_front.png";
+            coin.src = "./images/Pound_coin_front.png";
         } else if (value === -1) {
-            coin.src = "Pound_coin_back.png";
+            coin.src = "./images/Pound_coin_back.png";
         };
     }, 850);
 };
@@ -275,7 +278,7 @@ function stop() {
         }, config: {responsive: true}}, {}, {showSendToCloud:true});
     
         Plotly.purge(graph);
-        coin.src = "Pound_coin_front.png";
+        coin.src = "./images/Pound_coin_front.png";
     };
 };
 
