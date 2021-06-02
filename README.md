@@ -1,0 +1,2 @@
+# Introduction-to-random-walks
+A suite of visualisations aimed at explaining the concept of the random walk to Year 2 physicists and below. We will begin by studying the canonical random walk, that of a coin toss plus a drunkard on a 1D number line (Bernoulli process). We then easily expand upon the property of this random walk to see how we can model more complex phenomena using similar ideas (Brownian motion for particle diffusion, Lévy flight for animal foraging paths).
