@@ -208,7 +208,7 @@ function submit() {
         };
     };
 
-    tossMultipleButton.innerHTML = 'Toss ' + numberOfTosses.value + ' Times';
+    tossMultipleButton.innerHTML = 'simulate ' + numberOfTosses.value + ' realisations at 50 steps';
 };
 
 function coinTossMultiple() {
@@ -228,19 +228,30 @@ function coinTossMultiple() {
     setTimeout(function() {
         Plotly.newPlot(graph, {
             data: [{
+                mode: 'lines',
+                type: 'scatter',
+                x: getData(Math.sqrt(50))[0],
+                y: getData(Math.sqrt(50))[1],
+                name: 'expected pdf'
+            }, {
                 type: 'histogram',
-                histnorm: '',
-                name: 'Times traversing through a point',
+                histnorm: 'probability density',
+                name: 'Experimental pdf',
                 x: xData,
                 xbins: {size: 1}
             }], layout: {
-                title: 'Number of times the walker traverses through a point'
+                title: 'Probability of landing on site i'
             }
         , config: {responsive: true}}, {}, {showSendToCloud:true});
     }, 1000)
 
-    xData.push(dataPreparation(value)[0]);
-    xData = flatDeep(xData);
+    //xData = []
+    for (let i=0;i<value;i++) {
+        xDatum = dataPreparation(50)[0][50];
+        xData.push(xDatum)
+    }
+    //xData.push(dataPreparation(value)[0]);
+    //xData = flatDeep(xData);
 
     setTimeout(function() {
         tossMultipleButton.disabled = false;
@@ -254,6 +265,25 @@ function flatDeep(arr, d = Infinity) {
     return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
                  : arr.slice();
  };
+
+ function gaussianPDF(x, sigma) {
+    let mu = 0;
+    let factor1 = 1 / Math.sqrt(2 * Math.pow(sigma, 2) * Math.PI);
+    let factor2 = Math.exp(-(Math.pow((x-mu), 2) / (2 * Math.pow(sigma, 2))));
+    return 2*factor1 * factor2
+};
+
+function getData(sigma) {
+    let xArray = [...Array(10001).keys()];
+    xArray = xArray.map(function(element) {
+        return (element/10000)*(8*Math.sqrt(50))-4*Math.sqrt(50);
+    });
+
+    let yArray = xArray.map(function(element) {
+        return gaussianPDF(element, sigma);
+    });
+    return [xArray, yArray]
+};
 
 function stop() {
     if (confirm('Are you sure you want to refresh this page?')) {
